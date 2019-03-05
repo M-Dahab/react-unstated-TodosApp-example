@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Provider } from 'unstated';
+import TodoList from './TodoList';
+import DeletedTodoList from './DeletedTodoList';
 
 class App extends Component {
   render() {
     return (
-      <div className="font-sans">
-        <div className="flex justify-center">
-          <h1 className="text-indigo font-light mt-4">All set! <span role="img" aria-label="thumbs up">👍</span></h1>
-        </div>
-      </div>
+      <Provider>
+        <BrowserRouter>
+          <div>
+            <Route exact path="/" component={TodoList} />
+            <Route path="/deleted-todos" component={DeletedTodoList} />
+          </div>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }
